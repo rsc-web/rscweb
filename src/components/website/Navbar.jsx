@@ -32,7 +32,7 @@ class Navbar extends React.Component {
                     <NavbarButton
                         text="Вики"
                         icon="uil:globe"
-                        link="/wiki"
+                        link="wiki.rscweb.space"
                     />
                     <NavbarButton
                         text="Новости"
