@@ -1,0 +1,25 @@
+.block {
+    background: var(--backgroundLight);
+    width: 100%;
+    max-width: 1200px;
+    padding: 20px 30px;
+    border-radius: 8px;
+    margin: 20px auto;
+    box-sizing: border-box;
+}
+
+.block.primary {
+    background: linear-gradient(45deg, #3962ff, #3c26ff);
+}
+
+.block.primary h1 {
+    color: #fff;
+}
+.block.primary p {
+    color: #ffffffa5;
+}
+
+.block.minw {
+    max-width: fit-content;
+    padding: 20px 60px;
+}
