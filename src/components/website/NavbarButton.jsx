@@ -6,7 +6,7 @@ class NavbarButton extends React.Component {
     render () {
         let className = 'navbar-button';
         if(this.props.white) className += ' white';
-        return <a href={this.props.link} className={className}>
+        return <a href={this.props.link} className={className} onClick={this.props.onClick}>
             {this.props.icon ? <Icon icon={this.props.icon} /> : null}
             {this.props.text}
         </a>

@@ -1,0 +1,28 @@
+.error-box {
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    background: #ff39612a;
+    color: #ff3961;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: errorAppear .5s ease;
+    overflow: hidden;
+}
+
+.error-box svg {
+    margin-right: 10px;
+}
+
+@keyframes errorAppear {
+    0% {
+        max-height: 0;
+        padding: 0;
+    }
+    100% {
+        max-height: 100px;
+    }
+}

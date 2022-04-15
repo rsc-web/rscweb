@@ -1,0 +1,77 @@
+.input-container {
+    position: relative;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.input-container input, select {
+    width: 100%;
+    padding: 10px 16px;
+    font-size: 16px;
+    color: #fff;
+    background: var(--background);
+    border: none;
+    box-sizing: border-box;
+    border-radius: 4px;
+    box-shadow: 0 0 0 0 var(--primary);
+    transition: 0.25s ease box-shadow;
+    margin-top: 10px;
+}
+.input-container input:focus, select:focus {
+    outline: none;
+    box-shadow: 0 0 0 1px var(--primary), 0 0 0 3px #3961ff64;
+}
+.input-container.empty input {
+    margin-top: 0;
+}
+.input-container.error input:focus {
+    outline: none;
+    box-shadow: 0 0 0 1px #ff3961, 0 0 0 3px #ff396164;
+}
+
+select {
+    margin-bottom: 10px;
+}
+
+.input-label {
+    display: flex;
+    align-items: center;
+}
+
+
+.input-container .input-label {
+    position: absolute;
+    border-radius: 10px;
+    padding: 0 8px;
+    background: var(--backgroundLight);
+    top: -5px;
+    left: 10px;
+    font-size: 14px;
+    transition: 0.25s ease all;
+    color: var(--primary);
+}
+.input-container.error .input-label {
+    color: #ff3961;
+}
+
+.input-label svg {
+    margin-right: 8px;
+    transform: translateY(1px);
+}
+
+.input-container.empty .input-label {
+    font-size: 16px;
+    top: 8px;
+    left: 16px;
+    background: transparent;
+    pointer-events: none;
+    padding: 0;
+}
+
+.hor .input-container, .hor select {
+    align-self: flex-end;
+    margin-right: 10px;
+}
+.hor .input-container:last-child, .hor select:last-child {
+    margin-right: 0;
+}
