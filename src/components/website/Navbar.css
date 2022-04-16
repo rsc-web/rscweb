@@ -57,6 +57,9 @@
     margin-right: 5px;
     font-size: 18px;
 }
+.navbar-button.icon svg {
+    margin-right: 0;
+}
 
 .navbar-button.white {
     background: #fff;
@@ -72,6 +75,23 @@
 .navbar-button.white:active {
     transform: translateY(2px);
     box-shadow: 0 0 var(--primaryLight);
+}
+
+.navbar-user {
+    display: flex;
+    align-items: center;
+}
+.navbar-user-button {
+    height: 46px;
+    padding: 15px;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+.navbar-user-button img {
+    width: 30px;
+    height: 30px;
+    border-radius: 4px;
+    margin-right: 10px;
 }
 
 @keyframes logoHover {

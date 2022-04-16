@@ -2,12 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './index.css';
+import * as util from './scripts/util';
 
 import Navbar from './components/website/Navbar';
 import Footer from './components/website/Footer';
 
 import MainPage from './components/pages/MainPage';
 import NotFoundPage from './components/pages/NotFoundPage';
+
+util.getUserData();
 
 ReactDOM.render(
   <React.StrictMode>

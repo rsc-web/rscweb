@@ -1,3 +1,6 @@
+import axios from 'axios';
+import server from '../assets/server.json';
+
 export function validateUsername(username) {
     // username must only contain numbers, letters, underscores, and dashes
     // username must also be between 3 and 20 characters long
@@ -17,4 +20,53 @@ export function validatePassword(password) {
 
 export function saveAuthToken(token) {
     localStorage.setItem('authToken', token);
+}
+
+const userDataUpdateHooks = [];
+let notLoggedIn = null;
+
+export function hookToUserUpdate(callback) {
+    if(Object.keys(window.userData).length || notLoggedIn) return callback(notLoggedIn ? null : window.userData, null);
+    userDataUpdateHooks.push(callback);
+}
+
+export function getUserData () {
+    let authToken = localStorage.getItem('authToken');
+
+    window.userData = {};
+
+    if (authToken) {
+        axios.post(`${server.domain}/user/me`, {
+            authToken: authToken
+        }).then(response => {
+            let userData = response.data;
+            window.userData = userData;
+            userDataUpdateHooks.forEach(hook => {
+                hook(userData, null);
+            });
+        }).catch(error => {
+            console.log(error);
+            localStorage.removeItem('authToken');
+            userDataUpdateHooks.forEach(hook => {
+                hook(null, error);
+            });
+        });
+    } else {
+        notLoggedIn = true;
+        userDataUpdateHooks.forEach(hook => {
+            hook(null, null);
+        });
+    }
+}
+
+export function signOut () {
+    axios.post(`${server.domain}/user/signOut`, {
+        authToken: localStorage.getItem('authToken')
+    }).catch(error => {
+        console.log(error);
+    }).finally(() => {
+        localStorage.removeItem('authToken');
+        window.userData = {};
+        window.location.reload();
+    });
 }
