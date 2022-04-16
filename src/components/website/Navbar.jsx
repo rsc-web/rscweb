@@ -17,7 +17,9 @@ class Navbar extends React.Component {
         signinDialogOpen: false,
         loggedIn: false,
         loading: true,
-        userData: {}
+        userData: {},
+        menuOpen: false,
+        menuClosing: false
     }
 
     componentDidMount () {
@@ -51,14 +53,33 @@ class Navbar extends React.Component {
             </>
         }
 
+        let toggleMenu = () => {
+            if(this.state.menuOpen) {
+                this.setState({menuClosing: true});
+                setTimeout(() => {
+                    this.setState({menuOpen: false, menuClosing: false});
+                }, 500);
+            } else {
+                this.setState({menuOpen: true});
+            }
+        }
+
         return (<>
         <JoinDialog parent={this} />
         <SigninDialog parent={this} />
         <div className='navbar-wrapper'>
             <div className='navbar'>
+                <NavbarButton 
+                    icon="uil:bars" className="burger-menu-button" 
+                    onClick={toggleMenu}
+                />
                 <div className='navbar-left'>
                     <NavbarLogo />
                 </div>
+                <div 
+                    className={"navbar-mobile-wrapper" + (this.state.menuOpen ? ' open': '') + (this.state.menuClosing ? ' closing': '')}
+                    onClick={toggleMenu}
+                >
                 <div className='navbar-center'>
                     <NavbarButton
                         text="Главная"
@@ -85,6 +106,7 @@ class Navbar extends React.Component {
                         icon="uil:newspaper"
                         link="/news"
                     />
+                </div>
                 </div>
                 <div className='navbar-right'>
                     {this.state.loading ? <div className="spinner"/> : (this.state.loggedIn ? navbarRight.loggedIn : navbarRight.notLoggedIn)}

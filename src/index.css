@@ -44,11 +44,16 @@ h2 {
 }
 
 .fullh {
-  height: calc(100% - 508px);
+  min-height: calc(100% - 508px);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.fullh-nf {
+  min-height: calc(100% - 528px);
+  box-sizing: border-box;
 }
 
 .accent {

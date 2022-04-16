@@ -4,7 +4,7 @@ import MainBlock from '../website/MainBlock';
 class MainPage extends React.Component {
     render () {
         return (
-            <>
+            <div className="fullh-nf">
                 <MainBlock primary>
                     <h1>Добро Пожаловать в Сайт РСС!</h1>
                     <p>
@@ -31,7 +31,7 @@ class MainPage extends React.Component {
                 <MainBlock>
                     <h2>Новые Пользователи</h2>
                 </MainBlock>
-            </>
+            </div>
         );
     }
 };

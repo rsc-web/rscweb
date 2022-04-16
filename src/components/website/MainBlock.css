@@ -23,3 +23,10 @@
     max-width: fit-content;
     padding: 20px 60px;
 }
+
+@media screen and (max-width: 1228px) {
+    .block {
+        margin: 20px;
+        width: calc(100% - 40px);
+    }
+}

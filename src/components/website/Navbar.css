@@ -9,6 +9,7 @@
     display: flex;
     justify-content: center;
     align-items: stretch;
+    overflow: hidden;
 }
 
 .navbar {
@@ -51,6 +52,10 @@
 .navbar-button:hover {
     transform: scale(1.07);
     background: rgba(0, 0, 0, 0.067);
+}
+
+.navbar-button.icon {
+    padding: 14px 15px;
 }
 
 .navbar-button svg {
@@ -109,5 +114,122 @@
     }
     100% {
         transform: scale(1.1);
+    }
+}
+
+
+/* mobile */
+.burger-menu-button {
+    display: none;
+    box-sizing: border-box;
+    height: 46px;
+    padding: 0 15px;
+}
+.burger-menu-button svg {
+    width: 20px;
+    height: 20px;
+}
+
+@media screen and (max-width: 1100px) {
+    .burger-menu-button {
+        display: flex;
+        margin-right: 15vw;
+    }
+
+    .navbar-mobile-wrapper {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background: rgba(0,0,0,.5);
+        z-index: 999;
+        display: none;
+    }
+
+    .navbar-center {
+        background: var(--backgroundLight);
+        height: 100%;
+        box-sizing: border-box;
+        flex-direction: column;
+        width: 250px;
+        padding-top: 30px;
+        animation: menuOpen .5s ease;
+    }
+    .navbar-mobile-wrapper.closing .navbar-center {
+        animation: menuClose .25s ease both;
+    }
+    .navbar-center .navbar-button {
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .navbar-center .navbar-button:hover {
+        transform: none;
+    }
+
+    .navbar-mobile-wrapper.open {
+        display: block;
+        animation: menuOpenBg .25s ease;
+    }
+    .navbar-mobile-wrapper.closing {
+        animation: menuCloseBg .5s ease both;
+    }
+
+    .navbar-user-name {
+        display: none;
+    }
+    .navbar-user-button img {
+        margin-right: 0;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .burger-menu-button {
+        margin-right: 0;
+    }
+}
+
+@keyframes menuOpen {
+    0% {
+        transform: translateX(-450px);
+    }
+    30% {
+        transform: translateX(20px) scaleX(1.15);
+    }
+    70% {
+        transform: translateX(-5px);
+    }
+    100% {
+        transform: none;
+    }
+}
+
+@keyframes menuOpenBg {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes menuClose {
+    0% {
+        transform: none;
+    }
+    50% {
+        transform: translateX(20px) scaleX(1.15);
+    }
+    100% {
+        transform: translateX(-450px);
+    }
+}
+
+@keyframes menuCloseBg {
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
     }
 }
