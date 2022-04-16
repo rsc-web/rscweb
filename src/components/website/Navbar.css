@@ -189,6 +189,15 @@
     }
 }
 
+@media screen and (max-width: 500px) {
+    .navbar-right .navbar-button {
+        font-size: 0;
+    }
+    .navbar-right .navbar-button svg {
+        margin-right: 0;
+    }
+}
+
 @keyframes menuOpen {
     0% {
         transform: translateX(-450px);

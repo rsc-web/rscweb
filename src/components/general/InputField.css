@@ -67,11 +67,3 @@ select {
     pointer-events: none;
     padding: 0;
 }
-
-.hor .input-container, .hor select {
-    align-self: flex-end;
-    margin-right: 10px;
-}
-.hor .input-container:last-child, .hor select:last-child {
-    margin-right: 0;
-}
