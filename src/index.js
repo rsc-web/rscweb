@@ -9,6 +9,7 @@ import Footer from './components/website/Footer';
 
 import MainPage from './components/pages/MainPage';
 import NotFoundPage from './components/pages/NotFoundPage';
+import ProfilePage from './components/pages/ProfilePage';
 
 util.getUserData();
 
@@ -21,6 +22,8 @@ ReactDOM.render(
 
         <Route exact element={<MainPage/>} path="/" />
         <Route exact element={<NotFoundPage/>} path="*" />
+        <Route exact element={<NotFoundPage/>} path="/users" />
+        <Route exact element={<ProfilePage/>} path="/users/*" />
 
       </Routes>
     </Router>

@@ -81,9 +81,21 @@ h2 {
   width: 20px;
   border-radius: 100%;
   border: 2px solid white;
-  border-right-color: transparent;
+  border-right-color: transparent !important;
   animation: spin 1s linear infinite;
   margin: auto;
+}
+.spinner.big {
+  height: 69px;
+  width: 69px;
+  border-width: 4px;
+}
+.spinner.primary {
+  border-color: var(--primary);
+}
+
+.loadAppear {
+  animation: loadAppear 0.5s ease;
 }
 
 @keyframes spin {
@@ -102,5 +114,18 @@ h2 {
   .hor .input-container, .hor select {
       align-self: flex-end;
       margin-right: 0;
+  }
+}
+
+@keyframes loadAppear {
+  0% {
+      opacity: 0.3;
+      transform: translateY(8px);
+  }
+  50% {
+    transform: translateY(2px);
+  }
+  100% {
+      opacity: 1;
   }
 }

@@ -143,7 +143,7 @@
         width: 100vw;
         height: 100vh;
         background: rgba(0,0,0,.5);
-        z-index: 999;
+        z-index: 9999;
         display: none;
     }
 
@@ -168,6 +168,7 @@
     }
 
     .navbar-mobile-wrapper.open {
+        z-index: 9999;
         display: block;
         animation: menuOpenBg .25s ease;
     }

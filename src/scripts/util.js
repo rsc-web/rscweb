@@ -1,5 +1,9 @@
 import axios from 'axios';
 import server from '../assets/server.json';
+import months from '../assets/months.json';
+import roles from '../assets/roles.json';
+
+const defaultAvatar = 'https://uploads.scratch.mit.edu/get_image/user/1350_256x256.png';
 
 export function validateUsername(username) {
     // username must only contain numbers, letters, underscores, and dashes
@@ -69,4 +73,20 @@ export function signOut () {
         window.userData = {};
         window.location.reload();
     });
+}
+
+export function getAvatar(avatar) {
+    return avatar || defaultAvatar;
+}
+
+export function getJoinDate(date) {
+    let dateObj = new Date(date);
+    let month = months.case[dateObj.getMonth()];
+    let day = dateObj.getDate();
+    let year = dateObj.getFullYear();
+    return `${day} ${month}, ${year} года`;
+}
+
+export function getRole(role) {
+    return roles[role];
 }

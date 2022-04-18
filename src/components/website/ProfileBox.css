@@ -1,0 +1,113 @@
+.profile-box {
+    background: var(--backgroundLight);
+    width: 100%;
+    max-width: 1200px;
+    border-radius: 8px;
+    margin: 20px auto;
+    box-sizing: border-box;
+    overflow: hidden;
+    animation: loadAppear 0.5s ease;
+}
+
+.profile-box-header {
+    background: #3962ff;
+    padding: 20px 30px;
+    padding-top: 0;
+    margin-bottom: 30px;
+}
+
+.profile-avatar {
+    margin-bottom: -100px;
+    width: 100px;
+    height: 100px;
+    border-radius: 16px;
+    box-shadow: 0 0 0 12px #3962ff;
+}
+
+.profile-box-name, .profile-box-info {
+    margin-left: 120px;
+    display: flex;
+    align-items: center;
+}
+
+.profile-box-name h2 {
+    font-weight: 900;
+    color: white;
+    font-size: 24px;
+    margin-right: 16px;
+}
+.profile-box-name h4 {
+    color: #fffa;
+    font-weight: normal;
+    display: flex;
+    align-items: flex-end;
+}
+.profile-box-name h4 svg {
+    margin-right: 1px;
+}
+
+.profile-box-info {
+    color: #fff8;
+    margin-top: 8px;
+}
+
+.profile-box-info-group {
+    margin-right: 8px;
+    display: flex;
+    align-items: center;
+    border-right: 1px solid #fff4;
+    padding-right: 8px;
+}
+.profile-box-info-group:last-child {
+    border-right: none;
+    padding-right: 0;
+}
+.profile-box-info-group svg {
+    margin-right: 5px;
+}
+
+.profile-box-section {
+    padding: 20px 30px;
+    border-bottom: 1px solid #000;
+}
+.profile-box-section h2 {
+    margin: 0;
+    font-size: 14px;
+    color: var(--primary);
+    text-transform: uppercase;
+}
+.profile-box-section p {
+    margin: 0;
+    margin-top: 8px;
+    font-size: 20px;
+}
+
+@media screen and (max-width: 1228px) {
+    .profile-box {
+        max-width: 100%;
+        border-radius: 0;
+        margin: 0;
+        margin-bottom: -40px;
+    }
+    .profile-avatar {
+        margin-bottom: -69px;
+        width: 60px;
+        height: 60px;
+    }
+    .profile-box-name, .profile-box-info {
+        margin-left: 80px;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .profile-box-info {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .profile-box-info-group {
+        margin-right: 0;
+        border-right: none;
+        margin-bottom: 4px;
+        font-size: 12px;
+    }
+}
