@@ -5,11 +5,9 @@ import DialogBox from '../general/DialogBox';
 import InputField from '../general/InputField';
 import Button from '../general/Button';
 import ErrorBox from '../general/ErrorBox';
-import DateSelect from '../general/DateSelect';
 
 import * as util from '../../scripts/util';
 import server from '../../assets/server.json';
-import { Icon } from '@iconify/react';
 
 class SigninDialog extends React.Component {
 

@@ -1,41 +1,37 @@
 import React from 'react';
-import { Icon } from '@iconify/react';
 import * as util from '../../scripts/util';
+
+import ProfileBoxHeader from './ProfileBoxHeader';
 
 import './ProfileBox.css';
 
 class ProfileBox extends React.Component {
 
     state = {
-        editable: false,
+        isSelf: false,
+    }
+
+    componentDidMount () {
+        util.hookToUserUpdate(user => {
+            if(user && this.props.username == user.username) this.setState({ isSelf: true });
+        });
     }
 
     render () {
         return (
             <div className="profile-box fullh-nf">
-                <div className="profile-box-header">
-                    <img src={util.getAvatar(this.props.avatarUrl)} alt={this.props.displayName + ' Avatar'} className="profile-avatar" />
-                    <div className="profile-box-name">
-                        <h2>{this.props.displayName}</h2>
-                        <h4>
-                            <Icon icon="uil:at" />
-                            {this.props.username}
-                        </h4>
-                    </div>
-                    <div className="profile-box-info">
-                        <div className="profile-box-info-group">
-                            <Icon icon="uil:user" />
-                            <span>{util.getRole(this.props.role)}</span>
-                        </div>
-                        <div className="profile-box-info-group">
-                            <Icon icon="uil:calendar-alt" />
-                            <span>Аккаунт создан {util.getJoinDate(this.props.joinDate)}</span>
-                        </div>
-                    </div>
-                </div>
+                <ProfileBoxHeader 
+                    displayName={this.props.displayName}
+                    username={this.props.username}
+                    avatarUrl={this.props.avatarUrl}
+                    role={this.props.role}
+                    joinDate={this.props.joinDate}
+                    editable={this.state.isSelf}
+                    page={this.props.page}
+                />
                 <div className="profile-box-section">
                     <h2>О себе</h2>
-                    <p>{this.props.description}</p>
+                    <p className={this.props.description ? '' : 'empty'}>{this.props.description || 'Пусто'}</p>
                 </div>
                 <div className="profile-box-section">
                     <h2>Недавние Посты</h2>

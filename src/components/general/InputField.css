@@ -4,7 +4,14 @@
     width: 100%;
 }
 
-.input-container input, select {
+textarea {
+    resize: vertical;
+    height: 100px;
+    max-height: 256px;
+    font-family: inherit;
+}
+
+.input-container input, .input-container textarea, select {
     width: 100%;
     padding: 10px 16px;
     font-size: 16px;
@@ -17,14 +24,14 @@
     transition: 0.25s ease box-shadow;
     margin-top: 10px;
 }
-.input-container input:focus, select:focus {
+.input-container input:focus, .input-container textarea:focus, select:focus {
     outline: none;
     box-shadow: 0 0 0 1px var(--primary), 0 0 0 3px #3961ff64;
 }
-.input-container.empty input {
+.input-container.empty input, .input-container.empty textarea {
     margin-top: 0;
 }
-.input-container.error input:focus {
+.input-container.error input:focus, .input-container.error textarea:focus {
     outline: none;
     box-shadow: 0 0 0 1px #ff3961, 0 0 0 3px #ff396164;
 }

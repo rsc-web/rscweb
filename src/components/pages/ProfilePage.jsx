@@ -4,6 +4,7 @@ import server from '../../assets/server.json';
 
 import MessageBlock from '../general/MessageBlock';
 import ProfileBox from '../website/ProfileBox';
+import EditProfileDialog from '../dialogs/EditProfileDialog';
 
 class ProfilePage extends React.Component {
 
@@ -35,7 +36,8 @@ class ProfilePage extends React.Component {
 
     render () {
         return (
-            this.state.loading ? <div className="fullh"><div className="spinner big primary"/></div> :(
+            <>
+            {this.state.loading ? <div className="fullh"><div className="spinner big primary"/></div> :(
             this.state.error ? <MessageBlock 
                 minw loadAppear
                 heading="Такого Участника нет в Системе!"
@@ -49,7 +51,14 @@ class ProfilePage extends React.Component {
                 description={this.state.user.description}
                 role={this.state.user.role}
                 joinDate={this.state.user.joinDate}
-            />)
+                page={this}
+            />)}
+            {this.state.editProfileDialogOpen ? <EditProfileDialog
+                parent={this}
+                displayName={this.state.user.displayName}
+                description={this.state.user.description}
+            /> : null}
+            </>
         );
     }
 

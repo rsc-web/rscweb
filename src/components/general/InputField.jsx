@@ -6,7 +6,7 @@ import './InputField.css';
 class InputField extends React.Component {
 
     state = {
-        value: this.props.value || '',
+        value: this.props.defaultValue || '',
         error: null,
         showPassword: false,
         prevReact: null
@@ -23,16 +23,22 @@ class InputField extends React.Component {
             }, 0);
         }
 
+        let onInputChane = (e) => {
+            this.setState({ value: e.target.value });
+            if(this.props.onChange) this.props.onChange(e.target.value, this);
+        }
+
         return (
             <div className={className} style={this.props.style}>
                 <div className="input-label">
                     {this.props.icon ? <Icon icon={this.props.icon} /> : null}
                     {this.state.error || this.props.label}
                 </div>
-                <input type={this.props.type || 'text'} value={this.props.defaultValue} onChange={(e) => {
-                    this.setState({ value: e.target.value });
-                    if(this.props.onChange) this.props.onChange(e.target.value, this);
-                }} />
+                { this.props.type == 'textarea' ?
+                    <textarea defaultValue={this.props.defaultValue} onChange={onInputChane} /> :    
+                    <input type={this.props.type || 'text'} defaultValue={this.props.defaultValue} onChange={onInputChane} />
+                }
+                
             </div>
         );
     }
