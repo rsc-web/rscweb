@@ -23,8 +23,8 @@ class JoinDialog extends React.Component {
             email: '',
             password: '',
             birthYear: null,
-            birthMonth: null,
-            birthDay: null,
+            birthMonth: 0,
+            birthDay: 1,
         }
     }
 
