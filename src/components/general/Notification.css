@@ -1,0 +1,109 @@
+.notification {
+    position: fixed;
+    z-index: 999;
+    left: 0;
+    right: 0;
+    bottom: 40px;
+    padding: 20px 30px;
+    border-radius: 8px;
+    background: var(--primary);
+    max-width: 1200px;
+    box-sizing: border-box;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 0 0 5px #3962ff88;
+}
+
+.notification button, .notification-close {
+    flex-shrink: 0;
+}
+
+.notification button {
+    padding: 10px 16px;
+    background: white;
+    border: none;
+    border-radius: 4px;
+    color: var(--primary);
+    margin: 16px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.1s ease;
+}
+.notification button:hover {
+    box-shadow: 0 3px 0 #fff5;
+    transform: translateY(-2px);
+}
+.notification button:active {
+    transform: none;
+    box-shadow: 0 0 0 #fff5;
+    opacity: 0.7;
+}
+
+.notification p {
+    margin: 0;
+}
+
+.notification img {
+    height: 128px;
+    margin-right: 20px;
+}
+
+.notification-close {
+    padding: 10px;
+    border-radius: 100%;
+    cursor: pointer;
+    font-size: 20px;
+    transition: 0.25s ease;
+}
+.notification-close:hover {
+    background: #0001;
+    transform: scale(1.25) rotate(90deg);
+}
+.notification-close:active {
+    transition: 1s ease-out;
+    background: #0003;
+    transform: scale(0.9) rotate(360deg);
+}
+
+
+.notification.error {
+    background: #ce173c;
+    box-shadow: 0 0 0 5px #ce173c88;
+}
+.notification.error button {
+    color: #ce173c;
+}
+.notification.warning {
+    background: #e47610;
+    box-shadow: 0 0 0 5px #e4761088;
+}
+.notification.warning button {
+    color: #e47610;
+}
+.notification.success {
+    background: #10c976;
+    box-shadow: 0 0 0 5px #10c97688;
+}
+.notification.success button {
+    color: #10c976;
+}
+
+
+@media screen and (max-width: 1256px) {
+    .notification {
+        margin: 20px;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .notification {
+        margin: 20px;
+        flex-direction: column;
+    }
+    .notification img {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+}
