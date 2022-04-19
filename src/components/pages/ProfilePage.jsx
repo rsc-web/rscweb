@@ -62,6 +62,7 @@ class ProfilePage extends React.Component {
             {this.state.banUserDialogOpen ? <BanUserDialog
                 parent={this}
                 uid={this.state.user.uid}
+                unban={this.state.user.role == 'banned'}
             /> : null}
             </>
         );

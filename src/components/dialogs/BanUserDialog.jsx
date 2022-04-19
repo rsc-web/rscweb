@@ -38,7 +38,8 @@ class BanUserDialog extends React.Component {
         axios.post(`${server.domain}/moderation/ban`, {
             authToken: localStorage.getItem('authToken'),
             uid: this.props.uid,
-            reason: this.state.data.reason
+            reason: this.state.data.reason,
+            unban: this.props.unban
         }).then(() => {
             window.location.reload();
         }).catch(err => {
@@ -51,7 +52,7 @@ class BanUserDialog extends React.Component {
 
     render () {
         return (
-            <DialogBox propBased visible={this.props.parent.state.banUserDialogOpen} title="Вы уверены, что хотите забанить этого участника?" onClose={(self) => {
+            <DialogBox propBased visible={this.props.parent.state.banUserDialogOpen} title={`Вы уверены, что хотите ${this.props.unban ? 'раз' : 'за'}банить этого участника?`} onClose={(self) => {
                 self.setState({closing: true});
                 this.setState(this.initState);
                 setTimeout(() => {
@@ -81,7 +82,7 @@ class BanUserDialog extends React.Component {
             <p>Coming Soon</p>
                 
             <Button 
-                text="Забанить" disabled={this.state.errors.length} 
+                text={`${this.props.unban ? 'Раз' : 'За'}банить`} disabled={this.state.errors.length} 
                 loading={this.state.loading} 
                 onClick={() => {
                     this.sendRequest();
