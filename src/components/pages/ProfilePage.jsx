@@ -5,6 +5,7 @@ import server from '../../assets/server.json';
 import MessageBlock from '../general/MessageBlock';
 import ProfileBox from '../website/ProfileBox';
 import EditProfileDialog from '../dialogs/EditProfileDialog';
+import BanUserDialog from '../dialogs/BanUserDialog';
 
 class ProfilePage extends React.Component {
 
@@ -57,6 +58,10 @@ class ProfilePage extends React.Component {
                 parent={this}
                 displayName={this.state.user.displayName}
                 description={this.state.user.description}
+            /> : null}
+            {this.state.banUserDialogOpen ? <BanUserDialog
+                parent={this}
+                uid={this.state.user.uid}
             /> : null}
             </>
         );

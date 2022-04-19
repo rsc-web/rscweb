@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { Icon } from '@iconify/react';
 
 import DialogBox from '../general/DialogBox';
 import InputField from '../general/InputField';
@@ -8,16 +9,14 @@ import ErrorBox from '../general/ErrorBox';
 
 import server from '../../assets/server.json';
 
-class EditProfileDialog extends React.Component {
+class BanUserDialog extends React.Component {
 
     initState = {
         errors: [],
-        changed: false,
         apiError: null,
         loading: false,
         data: {
-            displayName: this.props.displayName,
-            description: this.props.description
+            reason: this.props.displayName
         }
     }
 
@@ -36,15 +35,12 @@ class EditProfileDialog extends React.Component {
     }
 
     sendRequest () {
-        axios.post(`${server.domain}/user/editProfile`, {
+        axios.post(`${server.domain}/moderation/ban`, {
             authToken: localStorage.getItem('authToken'),
-            displayName: this.state.data.displayName,
-            description: this.state.data.description
-        }).then(res => {
-            let newUser = this.props.parent.state.user;
-            newUser.displayName = res.data.displayName || this.state.data.displayName;
-            newUser.description = res.data.description || this.state.data.description;
-            this.props.parent.setState({ editProfileDialogOpen: false, user: newUser });
+            uid: this.props.uid,
+            reason: this.state.data.reason
+        }).then(() => {
+            window.location.reload();
         }).catch(err => {
             console.log(err);
             this.setState({ apiError: err.response.data });
@@ -55,40 +51,37 @@ class EditProfileDialog extends React.Component {
 
     render () {
         return (
-            <DialogBox propBased visible={this.props.parent.state.editProfileDialogOpen} title="Редактировать Свой Профиль" onClose={(self) => {
+            <DialogBox propBased visible={this.props.parent.state.banUserDialogOpen} title="Вы уверены, что хотите забанить этого участника?" onClose={(self) => {
                 self.setState({closing: true});
                 this.setState(this.initState);
                 setTimeout(() => {
-                    this.props.parent.setState({ editProfileDialogOpen: false });
+                    this.props.parent.setState({ banUserDialogOpen: false });
                     self.setState({closing: false});
                 }, 250);
             }}>
 
-            <InputField 
-                label="Видимое Имя" icon="uil:tag-alt" defaultValue={this.props.displayName}
-                onChange={(value, self) => {
-                    let error = value.length > 64;
-                    self.setState({error: error ? 'Слишком Длинное' : null});
-                    this.setState({ changed: true });
+            <p>
+                После бана, участник не сможет смотреть контент сайта РСС, редактировать свой профиль и писать посты.
+                Они будут видеть кто их забанил и по какой причинне.
+            </p>
 
-                    this.addError(error, 'displayName');
-                    this.updateData('displayName', value);
-                }} 
-            />
             <InputField 
-                label="Описание" type="textarea" icon="uil:comment-dots" defaultValue={this.props.description}
+                label="Причина" type="textarea"
                 onChange={(value, self) => {
                     let error = value.length > 1024;
-                    self.setState({error: error ? 'Слишком Длинное' : null});
+                    self.setState({error: error ? 'Слишком Длинная Причина' : null});
                     this.setState({ changed: true });
 
-                    this.addError(error, 'description');
-                    this.updateData('description', value);
+                    this.addError(error, 'reason');
+                    this.updateData('reason', value);
                 }} 
             />
+
+            <div class="input-label"> <Icon icon="uil:calendar-alt" />  Дата Разбана</div>
+            <p>Coming Soon</p>
                 
             <Button 
-                text="Изменить Данные" disabled={this.state.errors.length || !this.state.changed} 
+                text="Забанить" disabled={this.state.errors.length} 
                 loading={this.state.loading} 
                 onClick={() => {
                     this.sendRequest();
@@ -103,4 +96,4 @@ class EditProfileDialog extends React.Component {
 
 }
 
-export default EditProfileDialog;
+export default BanUserDialog;

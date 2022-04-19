@@ -9,11 +9,13 @@ class ProfileBox extends React.Component {
 
     state = {
         isSelf: false,
+        canBan: false
     }
 
     componentDidMount () {
         util.hookToUserUpdate(user => {
             if(user && this.props.username == user.username) this.setState({ isSelf: true });
+            if(user && this.props.username != user.username && user.role == 'admin') this.setState({ canBan: true });
         });
     }
 
@@ -27,6 +29,7 @@ class ProfileBox extends React.Component {
                     role={this.props.role}
                     joinDate={this.props.joinDate}
                     editable={this.state.isSelf}
+                    canBan={this.state.canBan}
                     page={this.props.page}
                 />
                 <div className="profile-box-section">

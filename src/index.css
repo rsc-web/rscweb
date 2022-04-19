@@ -98,6 +98,11 @@ h2 {
   animation: loadAppear 0.5s ease;
 }
 
+.tal {
+  text-align: left !important;
+  justify-content: flex-start !important;
+}
+
 @keyframes spin {
   0% {
       transform: rotate(0deg);

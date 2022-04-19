@@ -11,6 +11,7 @@ import WelcomeNotification from './components/website/WelcomeNotification';
 import MainPage from './components/pages/MainPage';
 import NotFoundPage from './components/pages/NotFoundPage';
 import ProfilePage from './components/pages/ProfilePage';
+import BanPage from './components/pages/BanPage';
 
 util.getUserData();
 
@@ -26,6 +27,7 @@ ReactDOM.render(
         <Route exact element={<NotFoundPage/>} path="*" />
         <Route exact element={<NotFoundPage/>} path="/users" />
         <Route exact element={<ProfilePage/>} path="/users/*" />
+        <Route exact element={<BanPage/>} path="/banned" />
 
       </Routes>
     </Router>

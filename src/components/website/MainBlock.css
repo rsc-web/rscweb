@@ -24,6 +24,16 @@
     padding: 20px 60px;
 }
 
+.block a {
+    color: var(--primaryLight);
+}
+.block a:hover {
+    color: var(--primaryBright);
+}
+.block a:active {
+    color: var(--primary);
+}
+
 @media screen and (max-width: 1228px) {
     .block {
         margin: 20px;

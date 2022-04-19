@@ -7,7 +7,7 @@ class ErrorBox extends React.Component {
 
     render () {
         return (
-            <div className="error-box">
+            <div className={"error-box " + this.props.className || ""}>
                 <Icon icon="uil:exclamation-circle" fontSize={20} />
                 {this.props.text}
             </div>

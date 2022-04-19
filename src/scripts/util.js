@@ -2,6 +2,7 @@ import axios from 'axios';
 import server from '../assets/server.json';
 import months from '../assets/months.json';
 import roles from '../assets/roles.json';
+import whitelist from '../assets/whitelist.json';
 
 const defaultAvatar = 'https://uploads.scratch.mit.edu/get_image/user/1350_256x256.png';
 
@@ -48,6 +49,10 @@ export function getUserData () {
             userDataUpdateHooks.forEach(hook => {
                 hook(userData, null);
             });
+
+            if(userData.banned && window.location.pathname != '/banned' && !whitelist.banPages.includes(window.location.pathname)) 
+                window.location.pathname = '/banned';
+            else if(!userData.banned && window.location.pathname == '/banned') window.location.pathname = '/';
         }).catch(error => {
             console.log(error);
             localStorage.removeItem('authToken');
@@ -60,6 +65,7 @@ export function getUserData () {
         userDataUpdateHooks.forEach(hook => {
             hook(null, null);
         });
+        if(window.location.pathname == '/banned') window.location.pathname = '/';
     }
 }
 

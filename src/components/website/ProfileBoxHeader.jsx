@@ -16,6 +16,15 @@ class ProfileBoxHeader extends React.Component {
             }}
         />;
 
+        const banButton = <NavbarButton
+            icon="uil:ban"
+            title="Забанить Пользователя"
+            className="profile-box-ban"
+            onClick={() => {
+                this.props.page.setState({ banUserDialogOpen: true });
+            }}
+        />;
+
         return (<div className="profile-box-header">
             <img src={util.getAvatar(this.props.avatarUrl)} alt={this.props.displayName + ' Avatar'} className="profile-avatar" />
             <div className="profile-box-name">
@@ -36,6 +45,7 @@ class ProfileBoxHeader extends React.Component {
                 </div>
             </div>
             {this.props.editable ? editButton : null}
+            {this.props.canBan ? banButton : null}
         </div>);
     }
 
