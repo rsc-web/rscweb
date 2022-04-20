@@ -48,6 +48,16 @@
     margin-right: 1px;
 }
 
+.profile-box .badges {
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+}
+.profile-box .badges img {
+    height: 20px;
+    margin-right: 16px;
+}
+
 .profile-box-info {
     color: #fff8;
     margin-top: 8px;

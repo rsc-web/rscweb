@@ -33,7 +33,10 @@ class Notification extends React.Component {
         return (this.state.show ? <div className={className}>
             {this.props.icon ? <img src={this.props.icon} /> : null}
             <p>{this.props.message}</p>
-            {this.props.button ? <button onClick={() => { this.props.button.onClick(this) }}>{this.props.button.text}</button> : null}
+            {this.props.button ? <button 
+                disabled={this.props.loading} 
+                onClick={() => { this.props.button.onClick(this) }}
+            >{this.props.loading ? 'Загрузка...' : this.props.button.text}</button> : null}
             {this.props.close ? <Icon className="notification-close" icon="uil:times" onClick={() => {
                 this.close();
              }} /> : null}

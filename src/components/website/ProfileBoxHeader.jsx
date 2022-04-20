@@ -2,11 +2,18 @@ import React from 'react';
 import { Icon } from '@iconify/react';
 import * as util from '../../scripts/util';
 
+import badgeEmailver from '../../assets/badges/emailver.svg';
+import badgeVerif from '../../assets/badges/verif.svg';
+
 import NavbarButton from './NavbarButton';
 
 class ProfileBoxHeader extends React.Component {
 
-    
+    hasBadge (badge) {
+        return this.props.badges[badge];
+    }
+
+
     render () {
         const editButton = <NavbarButton
             icon="uil:pen"
@@ -33,6 +40,10 @@ class ProfileBoxHeader extends React.Component {
                     <Icon icon="uil:at" />
                     {this.props.username}
                 </h4>
+                <div className="badges">
+                    {this.hasBadge('verified') ? <img src={badgeVerif} title="Проверенный Аккаунт" /> : null}
+                    {this.hasBadge('emailVerified') ? <img src={badgeEmailver} alt="Подтверждённый Емайл" /> : null}
+                </div>
             </div>
             <div className="profile-box-info">
                 <div className="profile-box-info-group">

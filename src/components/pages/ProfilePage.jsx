@@ -51,6 +51,7 @@ class ProfilePage extends React.Component {
                 avatarUrl={this.state.user.avatarUrl} 
                 description={this.state.user.description}
                 role={this.state.user.role}
+                badges={this.state.user.badges}
                 joinDate={this.state.user.joinDate}
                 page={this}
             />)}

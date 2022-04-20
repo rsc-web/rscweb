@@ -96,3 +96,13 @@ export function getJoinDate(date) {
 export function getRole(role) {
     return roles[role];
 }
+
+export function getUrlParam(param) {
+    let url = window.location.href;
+    let params = url.split('?')[1].split('&');
+    for (let i = 0; i < params.length; i++) {
+        let pair = params[i].split('=');
+        if (pair[0] == param) return pair[1];
+    }
+    return null;
+}

@@ -27,6 +27,7 @@ class ProfileBox extends React.Component {
                     username={this.props.username}
                     avatarUrl={this.props.avatarUrl}
                     role={this.props.role}
+                    badges={this.props.badges}
                     joinDate={this.props.joinDate}
                     editable={this.state.isSelf}
                     canBan={this.state.canBan}

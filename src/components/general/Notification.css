@@ -41,8 +41,14 @@
     opacity: 0.7;
 }
 
+.notification button:disabled {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
 .notification p {
     margin: 0;
+    width: 100%;
 }
 
 .notification img {
