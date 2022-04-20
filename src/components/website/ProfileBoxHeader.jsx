@@ -42,7 +42,7 @@ class ProfileBoxHeader extends React.Component {
                 </h4>
                 <div className="badges">
                     {this.hasBadge('verified') ? <img src={badgeVerif} title="Проверенный Аккаунт" /> : null}
-                    {this.hasBadge('emailVerified') ? <img src={badgeEmailver} alt="Подтверждённый Емайл" /> : null}
+                    {this.hasBadge('emailVerified') ? <img src={badgeEmailver} title="Подтверждённый Емайл" /> : null}
                 </div>
             </div>
             <div className="profile-box-info">
