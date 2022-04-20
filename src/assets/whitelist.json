@@ -4,6 +4,7 @@
         "/about",
         "/privacy",
         "/terms",
-        "/rules"
+        "/rules",
+        "/verifyEmail"
     ]
 }
