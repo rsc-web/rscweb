@@ -22,7 +22,7 @@ class BanPage extends React.Component {
                 {this.state.data ?
                 <>
                 <MainBlock>
-                    <h1>Ваш Аккаунт Забанаен</h1>
+                    <h1>Ваш Аккаунт Забананен</h1>
                     <p>
                         {util.getJoinDate(new Date(this.state.data.banDate))}, 
                         модератором <b>{this.state.data.banAdmin.displayName}</b> (<i>@{this.state.data.banAdmin.username}</i>)
