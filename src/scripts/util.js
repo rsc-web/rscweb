@@ -19,8 +19,11 @@ export function validateEmail(email) {
 }
 
 export function validatePassword(password) {
-    // a password must be at least 8 characters long and must contain at least one number and letter
-    return /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(password);
+    if(password.length < 8) return false;
+    if(!password.match(/[a-z]/)) return false;
+    if(!password.match(/[A-Z]/)) return false;
+    if(!password.match(/[0-9]/)) return false;
+    return true;
 }
 
 export function saveAuthToken(token) {
