@@ -40,7 +40,11 @@ class ProfileAvatarChanger extends React.Component {
             method: "post",
             url: `${server.domain}/user/editAvatar`,
             data: formdata,
-            headers: { "Content-Type": "multipart/form-data" },
+            headers: { "Content-Type": "multipart/form-data", 
+                "Access-Control-Allow-Origin": 'https://rscweb.space',
+                "Access-Control-Allow-Methods": 'POST, GET, OPTIONS',
+                "Access-Control-Allow-Headers": 'X-PINGOTHER, Content-Type',
+                "Access-Control-Max-Age": 86400 },
         }).then(res => {
             this.setState({ loading: false, avatarUrl: res.data.avatarUrl });
             this.input.current.value = null;
