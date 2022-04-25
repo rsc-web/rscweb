@@ -48,7 +48,7 @@ class Navbar extends React.Component {
             loggedIn: <>
                 <NavbarUser
                     username={this.state.userData.username}
-                    avatar={this.state.userData.avatarUrl}
+                    avatarUrl={this.state.userData.avatarUrl}
                 />
             </>
         }

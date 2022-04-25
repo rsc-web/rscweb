@@ -6,6 +6,7 @@ import badgeEmailver from '../../assets/badges/emailver.svg';
 import badgeVerif from '../../assets/badges/verif.svg';
 
 import NavbarButton from './NavbarButton';
+import ProfileAvatarChanger from './ProfileAvatarChanger';
 
 class ProfileBoxHeader extends React.Component {
 
@@ -32,8 +33,13 @@ class ProfileBoxHeader extends React.Component {
             }}
         />;
 
+        const avatarChangeButton = <ProfileAvatarChanger/>;
+
         return (<div className="profile-box-header">
-            <img src={util.getAvatar(this.props.avatarUrl)} alt={this.props.displayName + ' Avatar'} className="profile-avatar" />
+            <div className="profile-avatar">
+                <img src={util.getAvatar(this.props.avatarUrl)} alt={this.props.displayName + ' Avatar'} />
+                {this.props.editable ? avatarChangeButton : null}
+            </div>
             <div className="profile-box-name">
                 <h2>{this.props.displayName}</h2>
                 <h4>
