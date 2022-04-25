@@ -19,10 +19,9 @@ export function validateEmail(email) {
 }
 
 export function validatePassword(password) {
+    let numbers = '1234567890';
     if(password.length < 8) return false;
-    if(!password.match(/[a-z]/)) return false;
-    if(!password.match(/[A-Z]/)) return false;
-    if(!password.match(/[0-9]/)) return false;
+    if(!password.toLowerCase().split('').filter(c => numbers.includes(c)).length) return false;
     return true;
 }
 
